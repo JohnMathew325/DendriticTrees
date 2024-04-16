@@ -47,44 +47,6 @@ how biological neurons function. The dendrites of biological neurons introduce n
 created a neural network model that better approximates the behavior of biological neurons and trained and tested it on multiple image classification datasets. A flaw of 
 authors' model is that the weights of the model can be postive or negative. In true biological neurons the weights can only be positive. In this project, we modify the 
 model so that it constrains the values of the weights to only be positive. </p>
-
-<h2>Paper Review/h2>
-
-<p>Since the ouputs of a neuron are binary, the authors chose to train their model on a binary classification task. To do this, they went through multiple 
-image classification datasets and found the least linearly seperable classes in each of them. The task of the model was then to distinguish between those two classes. 
-The datasets used are MNIST (Lecun et al., 1998), Fashion-MNIST (Xiao et al., 2017), EMNIST (Cohen et al., 2017), Kuzushiji-MNIST (Clanuwat et al., 2018), 
-CIFAR-10 (Krizhevsky, 2009), Street View House Numbers (SVHN) (Goodfellow et al., 2014), and USPS (Hastie et al., 2001). A fully connected neural network with two layers 
-and one output node was used as a control to compare the k-tree model to. 
-</p>
-
-<p>
-To implement the k-tree model, a feed-forward neural network was developed with sparse binary-tree connections, where each node connects to two inputs and produces one output. 
-This model features a series of weight matrices that are initially dense tensors but are sparsified in such a way that many weights are set to zero. Specifically, for processing 
-1024 pixel-size images, the model architecture consists of a 1-tree with 10 layers, where the size of the layers decreases exponentially from 1024 by 512 to 2 by 1. For larger 
-3072 pixel-size images, an additional layer is included, starting from 3072 by 1024. The final layer in both configurations is structured as k by 1, reflecting the number of 
-subtrees in the k-tree. The initialization of these sparsified matrices uses a Kaiming normal approach, adjusted for the density of the non-zero elements. Additionally, a "freeze mask" is 
-employed to maintain the zero-value weights unchanged during training. The network utilizes leaky ReLU activation with a slope of 0.01 for intermediate nodes and a sigmoid function 
-at the output to keep the final values between 0 and 1.
-</p>
-
-<p>
-In the training, the authors used a Nvidia GeForce 1080 GPU with CUDA version 10.1. The model and its components were configured with a batch size of 256. An early stopping 
-mechanism was implemented, where training would cease if no improvement in loss was observed over 60 epochs. Binary cross entropy loss was used to calculate loss. The Adam optimizer, 
-with a learning rate of 0.001, was used for adjustments in the model's weights.
-
-A significant step in the training process involved zeroing out gradients specified by a "freeze mask" right after the backward step (where gradients are computed) and before the weights 
-are updated. This technique was used to maintain sparse connections within the model.
-
-The experiment ran a train-test loop across 10 trials, using different subsets for training in each trial, while testing was consistently performed on the same dataset. After completing 
-these trials, averages and standard deviations of the outcomes were computed, and statistical significance was assessed using Student's t-test.
-</p>
-
-<p>The model demonstrated enhanced performance in high-dimensional binary image classification tasks compared to a linear classifier and approached the performance of a fully connected 
-neural network (FCNN) when the number of dendritic repetitions was increased, specifically matching FCNN in several tasks. However, the study's relevance is limited by the biologically 
-implausible one-dimensional vectorized inputs used, which affected performance depending on their order—an area identified for further investigation. Moreover, the constrained dendritic 
-tree model's assumptions about synaptic inputs and inter-node weights warrant reevaluation to increase biological plausibility. Future work will involve comparing the performance of this 
-dendrite-inspired structure with less structured sparse ANNs and exploring the impacts of modifying input ordering and parameter constraints on model efficacy.
-</p>
  
 <h2>Technical Structure</h2>
 
