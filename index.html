@@ -58,7 +58,7 @@ model so that it constrains the values of the weights to only be positive. </p>
 
 <h2>Technical Structure</h2>
 
-<p>We replicated the authors &apos model architecture, using a k-tree model to be a feed forward neural network with sparse binary-tree connections. We sparsified the 
+<p>We replicated the authors &#39 model architecture, using a k-tree model to be a feed forward neural network with sparse binary-tree connections. We sparsified the 
  weight matrices by having each node receive 2 inputs and producing 1 output. The final layer of this tree is k by 1, k being the number of subtrees in the k-tree. 
  We used a <q>freeze mask</q> that records which weights are set to 0 in order to freeze 0-weights during training. Additionally, we used a sigmoid non-linearity at the 
  final output node which keeps output values between 0 and 1, and we used a leaky ReLU with a 0.01 slope for nodes between layers.
