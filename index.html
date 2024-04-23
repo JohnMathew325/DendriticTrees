@@ -48,6 +48,8 @@ created a neural network model that better approximates the behavior of biologic
 authors' model is that the weights of the model can be postive or negative. In true biological neurons the weights can only be positive. In this project, we modify the 
 model so that it constrains the values of the weights to only be positive. </p>
 
+<img src="dendritictree" alt="dend" width=600 height=300>
+
 <h2>Paper Review</h2>
 
 <p>Since the ouputs of a neuron are binary, the authors chose to train their model on a binary classification task. To do this, they went through multiple 
@@ -56,6 +58,8 @@ The datasets used are MNIST (Lecun et al., 1998), Fashion-MNIST (Xiao et al., 20
 CIFAR-10 (Krizhevsky, 2009), Street View House Numbers (SVHN) (Goodfellow et al., 2014), and USPS (Hastie et al., 2001). A fully connected neural network with two layers 
 and one output node was used as a control to compare the k-tree model to. 
 </p>
+
+<img src="data" alt="data" width=600 height=300>
 
 <p>
 To implement the k-tree model, a feed-forward neural network was developed with sparse binary-tree connections, where each node connects to two inputs and produces one output. 
@@ -66,6 +70,8 @@ subtrees in the k-tree. The initialization of these sparsified matrices uses a K
 employed to maintain the zero-value weights unchanged during training. The network utilizes leaky ReLU activation with a slope of 0.01 for intermediate nodes and a sigmoid function 
 at the output to keep the final values between 0 and 1.
 </p>
+
+ <img src="ktree" alt="ktree" width=600 height=300>
 
 <p>
 In the training, the authors used a Nvidia GeForce 1080 GPU with CUDA version 10.1. The model and its components were configured with a batch size of 256. An early stopping 
@@ -135,7 +141,7 @@ FCNN performs better than the 1-tree.
  <img src="fig3" alt="fig3" width=600 height=300>
 
  <p> 
- Figure 4: Performance of k-tree compared to LDA and FCNN.
+ Figure 2: Performance of k-tree compared to LDA and FCNN.
 k-tree performance is compared to that of a lower bound, LDA, and an upper
 bound, FCNN. The k is doubled 5 times, resulting in tests of k = 1, 2, 4, 8,
 16, 32. In most cases, as k (the number of repeated dendritic subtrees) increases,
@@ -149,12 +155,14 @@ so does the performance accuracy of the k-tree.
   accuracy as k increases, approaching the upper bound accuracy of the FCNN.
 </p>
 
+ <img src="parameters" alt="parameters" width=600 height=300>
  <p> 
-  
+  Figure 3: Parameter Size Comparison. Fully connected neural network
+(FCNN) architectures are matched in parameter size to the k-tree architectures.
 </p>
  
  <p> 
-  
+  We confirm the claims of the author&#39 model architectures. Parameters for k-tree models are comparable to parameters for FCNN models.
 </p>
  
 
