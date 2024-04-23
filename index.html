@@ -110,17 +110,64 @@ sets an expected upper bound.
 
  <h2>Experimental Findings</h2>
 
+ <p> 
+ We ran both k-tree and fcnn for k = 1, 2, 4, 8, 16, and 32. We also ran LDA. We ran these models for three datasets MNIST, FMNIST, and KMNIST. For all of these models and datasets we compare their accuracies.
+ </p>
+ 
  <img src="fig2" alt="fig2" width=600 height=300>
+
+ <p> 
+ Figure 1:  Performance of 1-tree compared to LDA and FCNN.
+1-tree performance is compared to that of a lower bound, LDA, and an upper
+bound, FCNN. For most tasks, the 1-tree performs better than LDA, and
+FCNN performs better than the 1-tree.
+</p>
+
+ <p> 
+  Comparatively, the models performed as expected. Following suit with the authors&#39 results, in most cases FCNN outperforms 1-tree and 1-tree outperforms LDA in terms of accuracy.
+  The only major difference lies in the much wider accuracy of 1-tree accuracy in the MNIST dataset. Our mean accuracy for 1-tree MNIST remains relatively similar (only ~.3 smaller). 
+  We find that these differences are negligible due to the maintained accuracy rankings in relation to the other models, and consider this a successful sign of replicating the authors&#39 results.
+ 
+</p>
+
+ 
+ 
  <img src="fig3" alt="fig3" width=600 height=300>
 
  <p> 
+ Figure 4: Performance of k-tree compared to LDA and FCNN.
+k-tree performance is compared to that of a lower bound, LDA, and an upper
+bound, FCNN. The k is doubled 5 times, resulting in tests of k = 1, 2, 4, 8,
+16, 32. In most cases, as k (the number of repeated dendritic subtrees) increases,
+so does the performance accuracy of the k-tree, approaching the upper bound.
+</p>
+
+ <p> 
+  Viewing the FCNN and k-tree model accuracies, the models improve as expected. Similar to the authors&#39 results, in the majority of cases as k increases,
+so does the performance accuracy of the k-tree.
+  The only difference in our results is a dip in the k-tree accuracy in the MNIST dataset when k=8. This is likely negligble, as our results followed the trend of an upward trajectory
+  accuracy as k increases, approaching the upper bound accuracy of the FCNN.
+</p>
+
+ <p> 
+  
+</p>
  
+ <p> 
+  
 </p>
  
 
  
 
  <h2>Conclusions</h2>
+
+ <p> 
+  Through our experiments with k-tree, LDA, and FCNN, we confirm the results of the authors. Nonlinear tree neuron model (k-tree) performs better than
+a linear classifier (LDA) in almost all cases. Additionally, repeating inputs to tree model (k-tree) increases performance comparable to FCNN with a small fraction
+of the parameters.
+</p>
+ 
 
 <h3>References</h3>
 
