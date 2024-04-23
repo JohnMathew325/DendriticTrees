@@ -88,18 +88,30 @@ dendrite-inspired structure with less structured sparse ANNs and exploring the i
  
 <h2>Technical Structure</h2>
 
-<p>We replicated the authors &#39 model architecture, using a k-tree model to be a feed forward neural network with sparse binary-tree connections. We sparsified the 
+<p>We replicated the authors&#39 model architecture, using a k-tree model to be a feed forward neural network with sparse binary-tree connections. We sparsified the 
  weight matrices by having each node receive 2 inputs and producing 1 output. The final layer of this tree is k by 1, k being the number of subtrees in the k-tree. 
  We used a <q>freeze mask</q> that records which weights are set to 0 in order to freeze 0-weights during training. Additionally, we used a sigmoid non-linearity at the 
  final output node which keeps output values between 0 and 1, and we used a leaky ReLU with a 0.01 slope for nodes between layers.
 </p>
 
-<p>In attempts to make a more biologically-inspired neural network, we constrained the values of the weights to only be positive. We did this by applying an absolute
+ <p>For baseline comparison, we also ran LDA, FCNN models, as they did in the paper. The linear discriminant
+analysis (LDA) linear classifier was relatively simple, using the out of box Sklearn package. This model is relatively simple and uses dimension reduction to do linear classification. 
+ This model was used to " approximate the performance of a linear point neuron model" (Jones, 2020). The fully connected neural network (FCNN) is more complex and size-comparable to parameter-complex k-tree.
+  The FCNN densely connected and consists of 2-layers. With its nonlinearities, we expect
+it to learn to express a greater variety of functions, therefore its performance
+sets an expected upper bound.
+ </p>
+
+<p> REMOVE IF WE DONT DO THIS 0 WEIGHTS CONSTRAINT THING 
+ In attempts to make a more biologically-inspired neural network, we constrained the values of the weights to only be positive. We did this by applying an absolute
  value function during the standard <q>Kaiming normal</q> weight initialization. Additionally, during training, we clamp the values to be non-negative. We plan to make
  the model more biologically plausible by constraining these values to be scalar.
 </p>
 
  <h2>Experimental Findings</h2>
+ 
+
+ 
 
  <h2>Conclusions</h2>
 
@@ -113,8 +125,7 @@ dendrite-inspired structure with less structured sparse ANNs and exploring the i
 
 <h2>Team Members</h2>
 
- <p>John Mathew </p>
-<p>Ben Tunney</p>
+ <p>John Mathew and Ben Tunney</p>
 
   
 </div><!--col-->
