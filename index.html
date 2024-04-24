@@ -178,12 +178,10 @@ so does the performance accuracy of the k-tree.
 </p>
 
  <img src="Accuracies.png" alt="fig3" width=600 height=300>
- 
- <p> 
-  We confirm the claims of the author&#39 model architectures. Parameters for k-tree models are comparable to parameters for FCNN models.
-</p>
- 
 
+Despite the ktree models being able to closely match the classification ability of FCNNs, they present a major disadvantage in that they take significantly longer to train. When k=1, this 
+difference is realtively low: 2 minutes for the FCNN, 7 minutes for the ktree. However, as model complexity increases, this gap grows significantly. When k=32, the FCNN training time stays 
+at 2 minutes while the ktree training time is in excess of 4 hours.
  
 
  <h2>Conclusions</h2>
@@ -191,12 +189,15 @@ so does the performance accuracy of the k-tree.
  <p> 
   Through our experiments with k-tree, LDA, and FCNN, we confirm the results of the authors. Nonlinear tree neuron model (k-tree) performs better than
 a linear classifier (LDA) in almost all cases. Additionally, repeating inputs to tree model (k-tree) increases performance comparable to FCNN with a small fraction
-of the parameters.
+of the parameters. However, the tree models take significantly longer to train compared to FCNNs, with the gap increasing with model complexity. Unless these tree 
+models can be made to be trained faster, they will lack many practical applications and will remain a research curiosity. 
 </p>
 
  <p> 
   Upon confirming the results of this paper and the potential power of the nonlinear tree neuron model, we realize the merit in developing biologically-inspired neural networks.
-  With future research into areas like neuroscience, we may come to conclusions where we can create effective interdisciplinary solutions to machine learning problems. 
+  More work in this area may help us decipher the mechanism behind intuition in animal brains and guide us towards creating better neural networks. Given the energy efficiency 
+  of human brains, modelling neurons after the human brain may help us create more energy efficient neural networks. This is an especially important problem because presently, large 
+  neural networks require very significant amounts of energy to train. With more efficient neural architectures, this problem can be improved. 
 </p>
 
  <p> 
