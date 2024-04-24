@@ -119,16 +119,15 @@ dendrite-inspired structure with less structured sparse ANNs and exploring the i
 
  <p>For baseline comparison, we also ran LDA, FCNN models, as they did in the paper. The linear discriminant
 analysis (LDA) linear classifier was relatively simple, using the out of box Sklearn package. This model is relatively simple and uses dimension reduction to do linear classification. 
- This model was used to " approximate the performance of a linear point neuron model" (Jones, 2020). The fully connected neural network (FCNN) is more complex and size-comparable to parameter-complex k-tree.
-  The FCNN densely connected and consists of 2-layers. With its nonlinearities, we expect
-it to learn to express a greater variety of functions, therefore its performance
-sets an expected upper bound.
+This model was used to " approximate the performance of a linear point neuron model" (Jones, 2020). The fully connected neural network (FCNN) is more complex and size-comparable to parameter-complex k-tree.
+The FCNN densely connected and consists of 2-layers. With its nonlinearities, we expect it to learn to express a greater variety of functions, therefore its performance sets an expected upper bound. 
+ In total, we trained 13 models: an LDA, ktrees where k = 1, 2, 4, 8, 16, and 32, and each of the ktrees' analagous FCNNs.
  </p>
 
 <p> 
- In attempts to make a more biologically-inspired neural network, we constrained the values of the weights to only be positive. We did this by applying an absolute
- value function during the standard <q>Kaiming normal</q> weight initialization. Additionally, during training, we clamp the values to be non-negative. We plan to make
- the model more biologically plausible by constraining these values to be scalar. We performed this on the 1-tree model for MNIST.
+In attempts to make a more biologically-inspired neural network, we constrained the values of the weights to only be positive. We did this by applying an absolute
+value function during the standard <q>Kaiming normal</q> weight initialization. Additionally, during training, we clamp the values to be non-negative. We trained 
+a 1-tree model with these weight constraints on MNIST, FMNIST, and KMNIST. 
 </p>
 
  <h2>Experimental Findings</h2>
@@ -153,7 +152,6 @@ FCNN performs better than the 1-tree.
  We find that these differences are negligible and can be attributed to differences in the random initialization of the model, and thus consider our results a successful sign of replicating 
  the authors&#39 results.
 </p>
-
  
  
  <img src="fig3" alt="fig3" width=600 height=300>
@@ -172,6 +170,14 @@ so does the performance accuracy of the k-tree.
   The only difference in our results is a dip in the k-tree accuracy in the MNIST dataset when k=8. This is likely negligble, as our results followed the trend of an upward trajectory
   accuracy as k increases, approaching the upper bound accuracy of the FCNN.
 </p>
+
+ <p> 
+ We find that constraining the weights of the 1-ktree to only be positive still allows it to successfully complete the classification tasks given for MNIST, FMNIST, and KMNIST. However, 
+ the accuracy is slightly lower than the non-constrained 1-ktree on the three datasets. This is likely because constraining the weights hinders the model from finding the optimal weight
+ configuration. The accuracies for this model compared to some of the other models we trained can be found in the figure below. 
+</p>
+
+ <img src="Accuracies.png" alt="fig3" width=600 height=300>
  
  <p> 
   We confirm the claims of the author&#39 model architectures. Parameters for k-tree models are comparable to parameters for FCNN models.
