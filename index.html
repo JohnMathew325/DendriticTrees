@@ -182,7 +182,8 @@ so does the performance accuracy of the k-tree.
 <p>
 Despite the ktree models being able to closely match the classification ability of FCNNs, they present a major disadvantage in that they take significantly longer to train. When k=1, this 
 difference is realtively low: 2 minutes for the FCNN, 7 minutes for the ktree. However, as model complexity increases, this gap grows significantly. When k=32, the FCNN training time stays 
-at 2 minutes while the ktree training time is in excess of 4 hours.
+at 2 minutes while the ktree training time is in excess of 4 hours. This stark difference is training time is likely due to the architecture of the tree models not having fully connected layers,
+decreasing each layers ability to learn from the layers before it. 
 </p>
 
  <h2>Conclusions</h2>
