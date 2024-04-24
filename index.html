@@ -48,9 +48,11 @@ Trees</h2>
 <p>The paper investigates the ability of a neural network architecture inspired by the dendritic functionality of biological neurons in solving image classification
 problems. Typical artificial neural network architecture involves linearly summing a set of inputs before applying a nonlinear threshhold. This is different from 
 how biological neurons function. The dendrites of biological neurons introduce nonlinearities to synaptic inputs before summation at the soma. The authors of the paper 
-created a neural network model that better approximates the behavior of biological neurons and trained and tested it on multiple image classification datasets. A flaw of 
-authors' model is that the weights of the model can be postive or negative. In true biological neurons the weights can only be positive. In this project, we modify the 
-model so that it constrains the values of the weights to only be positive. </p>
+created a neural network model that better approximates the behavior of biological neurons and trained and tested it on multiple image classification datasets. The authors
+find that these dendritic neural networks can readily solve image classification problems, such as MNIST. One of the flaws of the authors' model is that the weights of the 
+model can be postive or negative. In true biological neurons the weights can only be positive. In this project, we seek to attempt to validate their results and find tradeoffs
+that come with their model. Additionally, we seek to constrain the weights in the model and rerun it in order to see what effect that greater similarity to biological neurons
+has on accuracy.</p>
 
 <img src="tpVtJ.jpg" alt="dend" width=400 height=300>
 
@@ -126,23 +128,24 @@ sets an expected upper bound.
  <h2>Experimental Findings</h2>
 
  <p> 
- We ran both k-tree and fcnn for k = 1, 2, 4, 8, 16, and 32. We also ran LDA. We ran these models for three datasets MNIST, FMNIST, and KMNIST. For all of these models and datasets we compare their accuracies.
+ We ran both k-tree and fcnn for k = 1, 2, 4, 8, 16, and 32. We also ran LDA. Due to the exorbitant training time required the train on all seven datasets that the authors 
+ used, we only ran the models on three datasets MNIST, FMNIST, and KMNIST. For all of these models and datasets we compare their accuracies to those reported in the paper.
  </p>
  
  <img src="fig2" alt="fig2" width=600 height=300>
 
  <p> 
- Figure 1:  Performance of 1-tree compared to LDA and FCNN.
+Figure 1:  Performance of 1-tree compared to LDA and FCNN.
 1-tree performance is compared to that of a lower bound, LDA, and an upper
 bound, FCNN. For most tasks, the 1-tree performs better than LDA, and
 FCNN performs better than the 1-tree.
 </p>
 
  <p> 
-  Comparatively, the models performed as expected. Following suit with the authors&#39 results, in most cases FCNN outperforms 1-tree and 1-tree outperforms LDA in terms of accuracy.
-  The only major difference lies in the much wider accuracy of 1-tree accuracy in the MNIST dataset. Our mean accuracy for 1-tree MNIST remains relatively similar (only ~.3 smaller). 
-  We find that these differences are negligible due to the maintained accuracy rankings in relation to the other models, and consider this a successful sign of replicating the authors&#39 results.
- 
+ Comparatively, the models performed as expected. Following suit with the authors&#39 results, in most cases FCNN outperforms the analgous k-tree and the k-tree outperforms LDA in terms of accuracy.
+ The only major difference lies in the much wider range of accuracies for the 1-tree in the MNIST dataset. Our mean accuracy for 1-tree MNIST remains relatively similar (only ~.3 smaller). 
+ We find that these differences are negligible and can be attributed to differences in the random initialization of the model, and thus consider our results a successful sign of replicating 
+ the authors&#39 results.
 </p>
 
  
