@@ -2,16 +2,6 @@
 <html lang="en">
 <head>
  
-<style>
-        /* CSS to style the container, image, and paragraph */
-        .container {
-            display: flex;
-        }
-
-        .container img {
-            margin-right: 20px; /* Spacing between image and paragraph */
-        }
-    </style>
  
 <title>Dendritic Trees</title>
 <meta property="og:title" content=Dendritic Trees" />
@@ -66,7 +56,6 @@ model so that it constrains the values of the weights to only be positive. </p>
 
 <h2>Paper Review</h2>
 
- <div class="container">
 <p>Since the ouputs of a neuron are binary, the authors chose to train their model on a binary classification task. To do this, they went through multiple 
 image classification datasets and found the least linearly seperable classes in each of them. The task of the model was then to distinguish between those two classes. 
 The datasets used are MNIST (Lecun et al., 1998), Fashion-MNIST (Xiao et al., 2017), EMNIST (Cohen et al., 2017), Kuzushiji-MNIST (Clanuwat et al., 2018), 
@@ -74,8 +63,8 @@ CIFAR-10 (Krizhevsky, 2009), Street View House Numbers (SVHN) (Goodfellow et al.
 and one output node was used as a control to compare the k-tree model to. 
 </p>
   
-    <img src="data" alt="data" width=350 height=500>
-</div>
+ <img src="data" alt="data" width=350 height=500>
+
 
 
 
